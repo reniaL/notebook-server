@@ -1,0 +1,35 @@
+
+plugins {
+  id "io.spring.dependency-management" version "1.0.2.RELEASE"
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "io.spring.dependency-management"
+
+    sourceCompatibility = theSourceCompatibility
+    targetCompatibility = theSourceCompatibility
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${theSpringBootVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${theSpringCloudVersion}"
+        }
+    }
+
+    dependencies {
+        compile "org.springframework.boot:spring-boot-starter"
+        compile "org.springframework.boot:spring-boot-starter-actuator"
+
+        compile "org.springframework.cloud:spring-cloud-starter-eureka"
+        compile "org.springframework.cloud:spring-cloud-starter-feign"
+        compile "org.springframework.cloud:spring-cloud-starter-hystrix"
+        compile "org.springframework.cloud:spring-cloud-starter-hystrix-dashboard"
+
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url "http://local.nexus.com:3001/nexus/content/groups/public/" }
+    }
+}
