@@ -1,11 +1,13 @@
 
 plugins {
-  id "io.spring.dependency-management" version "1.0.2.RELEASE"
+    id "io.spring.dependency-management" version "1.0.2.RELEASE"
+    id 'org.springframework.boot' version '1.5.7.RELEASE'
 }
 
 subprojects {
     apply plugin: "java"
     apply plugin: "io.spring.dependency-management"
+    apply plugin: 'org.springframework.boot'
 
     sourceCompatibility = theSourceCompatibility
     targetCompatibility = theSourceCompatibility
@@ -30,6 +32,6 @@ subprojects {
 
     repositories {
         mavenLocal()
-        maven { url "http://local.nexus.com:3001/nexus/content/groups/public/" }
+        maven { url "http://local.nexus.com/nexus/content/groups/public/" }
     }
 }
